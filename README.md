@@ -23,7 +23,8 @@ Inspired by macOS Dock aesthetics.
 
 ## 📸 Preview
 
-![tabliss-glass-theme.png](../_resources/tabliss-glass-theme.png)
+![Glass Dock Preview](preview/tabliss-glass-theme.png)
+
 
 ## 📦 Installation
 
