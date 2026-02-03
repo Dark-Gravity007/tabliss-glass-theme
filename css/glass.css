@@ -1,0 +1,278 @@
+:root{
+  /* Theme / shared values */
+  --font: "SF Pro Display", sans-serif;
+  --glass-bg: rgba(40, 40, 40, 0.38);
+  --glass-border: rgba(255, 255, 255, 0.18);
+  --glass-backdrop: blur(18px) saturate(170%);
+  --glass-shadow: 0 20px 40px rgba(0,0,0,.45);
+  --glass-inset: inset 0 1px 0 rgba(255,255,255,.18);
+  --muted: #757575;
+  --accent: #3182ce;
+  --link-w: 80px;
+  --link-h: 56px;
+  --link-radius: 18px;
+}
+
+/* --------------------
+   Search (glass) + input
+   --------------------*/
+.Search {
+  /* container glass */
+  position: relative;
+  width: 360px;
+  margin: 0 auto;
+  padding: 14px;
+  border-radius: 38px;
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-backdrop);
+  -webkit-backdrop-filter: var(--glass-backdrop);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow), var(--glass-inset);
+  z-index: 999;
+  display: flex;
+  align-items: center;
+}
+
+/* magnifying-glass icon */
+.Search:before {
+  content: "";
+  background-image: url('data:image/svg+xml;utf8,<svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg"><g clip-path="url(%23clip0_6_5)"><path d="M1.5 7.75C1.5 9.4076 2.15848 10.9973 3.33058 12.1694C4.50269 13.3415 6.0924 14 7.75 14C9.4076 14 10.9973 13.3415 12.1694 12.1694C13.3415 10.9973 14 9.4076 14 7.75C14 6.0924 13.3415 4.50269 12.1694 3.33058C10.9973 2.15848 9.4076 1.5 7.75 1.5C6.0924 1.5 4.50269 2.15848 3.33058 3.33058C2.15848 4.50269 1.5 6.0924 1.5 7.75Z" stroke="%23757575" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M12.814 12.8132L15.5 15.4999" stroke="%23757575" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></g><defs><clipPath id="clip0_6_5"><rect width="17" height="17" fill="white"/></clipPath></defs></svg>');
+  background-repeat: no-repeat;
+  background-size: contain;
+  position: absolute;
+  width: 28px;
+  height: 18px;
+  left: 30px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 9999;
+}
+
+/* input element */
+.Search > input {
+  width: 100%;
+  height: 48px;
+  border-radius: 9999px;
+  border: none;
+  padding-left: 48px; /* leave room for the icon */
+  margin: 0;
+  background: transparent;
+  color: #fff;
+  font-family: var(--font);
+  font-size: .6em;
+  box-shadow: 0 6px 8px rgba(0,0,0,0.15);
+  transition: all .2s ease;
+  text-align: left;
+}
+
+/* focus state */
+.Search > input:focus {
+  box-shadow: 0 3px 4px rgba(0,0,0,0.15), inset 0 0 0 2px var(--accent);
+  outline: none;
+}
+
+.Search > input::-webkit-search-cancel-button {
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.Search > input::placeholder {
+  opacity: 1;
+  color: var(--muted);
+}
+
+/* --------------------
+   Vertical Glass Dock (Links)
+   --------------------*/
+
+:root{
+  --dock-bg: rgba(40, 40, 40, 0.38);
+  --dock-border: rgba(255, 255, 255, 0.18);
+  --dock-backdrop: blur(18px) saturate(170%);
+  --dock-shadow: 0 20px 40px rgba(0,0,0,.45);
+  --dock-inset: inset 0 1px 0 rgba(255,255,255,.18);
+
+  --icon-size:17px;
+  --item-w: 90px;
+  --item-h: 56px;
+  --item-radius: 18px;
+
+  --hover-scale: 1.5;
+  --neighbor-scale: 1.05;
+}
+
+
+
+/* lable's font */
+.Links .LinkText{
+  position: relative;
+  font-size: 14px;
+  opacity: 1;
+}
+
+
+/* Offcentred correction lables */
+.Links a span,
+.Links .LinkText{
+  display: inline-block;
+  transform: translateY(1px); /* tiny visual nudge */
+}
+
+
+/* Dock container */
+.Links{
+  position: fixed;
+  left: 24px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 10px;
+  border-radius: 28px;
+
+  background: var(--dock-bg);
+  backdrop-filter: var(--dock-backdrop);
+  -webkit-backdrop-filter: var(--dock-backdrop);
+
+  border: 1px solid var(--dock-border);
+  box-shadow: var(--dock-shadow), var(--dock-inset);
+
+  z-index: 999;
+  animation: dockFloat 4s ease-in-out infinite;
+}
+
+/* Dock items */
+.Links a{
+  width: var(--item-w);
+  height: var(--item-h);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: var(--item-radius);
+  background: rgba(255,255,255,0.08);
+
+  box-shadow:
+    0 8px 18px rgba(0,0,0,.35),
+    inset 0 1px 0 rgba(255,255,255,.15);
+
+  transition:
+    transform .25s cubic-bezier(.4,0,.2,1),
+    filter .25s ease;
+
+  transform-origin: center;
+  text-decoration: none;
+}
+
+/* Icons */
+.Links a img,
+.Links a i{
+  width: var(--icon-size);
+  height: var(--icon-size);
+  display: block;
+}
+
+/* Hover focus */
+.Links a:hover{
+  transform: scale(var(--hover-scale));
+  filter: brightness(1.15);
+  z-index: 3;
+}
+
+/* Neighbor scaling (macOS-style) */
+.Links a:hover + a,
+.Links a:has(+ a:hover){
+  transform: scale(var(--neighbor-scale));
+  filter: brightness(1.05);
+}
+
+/* Optional label */
+.Links .LinkText{
+  margin-top: -5px;
+  transition: opacity .2s ease, transform .2s ease;
+}
+
+/* Floating idle animation */
+@keyframes dockFloat{
+  0%,100% { transform: translateY(-50%) translateY(-0.5%); }
+  50%     { transform: translateY(-50%) translateY(0.5%); }
+}
+
+
+/* --------------------
+   Widgets / Time
+   --------------------*/
+.Widgets .container .Slot > .Widget > .Time {
+  margin-top: 50px;
+  margin-right: 10px;
+  width: 220px;
+  position: relative;
+  border-radius: 20px;
+  background: var(--glass-bg);
+  backdrop-filter: blur(10px) saturate(150%);
+  -webkit-backdrop-filter: blur(10px) saturate(170%);
+  border: 1px solid rgba(255,255,255,0.18);
+  box-shadow: 0 20px 40px rgba(0,0,0,.2), inset 0 1px 0 rgba(255,255,255,.18);
+  z-index: 490;
+  text-align: center;
+  padding: 12px;
+}
+
+/* decorative bar at top */
+.Widgets .container .Slot > .Widget > .Time:before {
+  content: "";
+  width: 170px;
+  position: absolute;
+  height: 10px;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  background: rgba(40, 40, 40, 0.38);
+  backdrop-filter: blur(10px) saturate(200%);
+  -webkit-backdrop-filter: blur(10px) saturate(170%);
+  border: 1px solid rgba(255,255,255,0.1);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.18);
+  z-index: 490;
+}
+
+.Time h1 {
+  font-family: var(--font);
+  font-size: 66px;
+  font-weight: 300 !important;
+  line-height: 83.92px;
+  text-align: center;
+  padding-top: 3px;
+}
+
+.Time h3 {
+  font-family: var(--font);
+  font-size: 14px;
+  font-weight: 500 !important;
+  line-height: 16.71px;
+  text-align: center;
+  opacity: .5;
+  padding-bottom: 12px;
+}
+
+.Time hr { display: none; }
+
+/* --------------------
+   Greeting
+   --------------------*/
+.Greeting h2 {
+  font-family: var(--font);
+  font-size: 52px;
+  font-weight: 400;
+  line-height: 62.05px;
+  text-align: center;
+}
+
+/* --------------------
+   Weather (placeholder)
+   --------------------*/
+.Weather {
+  font-family: var(--font);
+}
