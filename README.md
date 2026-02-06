@@ -1,12 +1,3 @@
----
-title: README
-updated: 2026-02-03 11:25:22Z
-created: 2026-02-03 11:20:26Z
-latitude: 28.36703550
-longitude: 79.43043810
-altitude: 0.0000
----
-
 # Tabliss Glass Dock
 
 A clean glassmorphism-style **vertical dock** for the Tabliss new tab extension.  
