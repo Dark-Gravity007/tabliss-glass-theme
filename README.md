@@ -20,7 +20,7 @@ Inspired by macOS Dock aesthetics.
 
 1.  Open **Tabliss**
 2.  Go to **Settings → Advanced → Custom CSS**
-3.  Paste contents of `dock.css`
+3.  Paste contents of `glass.css`
 4.  Save & refresh
 
 ## ⚙️ Customization
